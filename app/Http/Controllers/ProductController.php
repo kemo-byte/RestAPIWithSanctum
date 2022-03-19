@@ -74,9 +74,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        $product->update($request->all());
-        return $product;
+        $result = Product::find($id);
+        $result->update($request->all());
+        if($result) return response(['message'=>'Updated !','User' => $result]);
+        else return response(['message'=>'Something Wrong !']);
     }
 
     /**
@@ -87,7 +88,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return Product::destroy($id);
+        $result = Product::destroy($id);
+
+        if($result) return response(['message'=>'Deleted !']);
+        else return response(['message'=>'Something Wrong !']);
     }
 
     /**
