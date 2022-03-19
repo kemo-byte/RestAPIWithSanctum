@@ -20,6 +20,7 @@ use App\Models\Product;
 // Route::resource('product', ProductController::class);
 
 Route::post('/register', [AuthController::class,'register']);
+Route::post('/login', [AuthController::class,'login']);
 Route::get('/product',[ProductController::class,'index']);
 Route::get('/product/{id}', [ProductController::class,'show']);
 Route::get('/product/search/{name}',[ProductController::class,'search']);
